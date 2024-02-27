@@ -1,0 +1,156 @@
+package general;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Reservation {
+    public String name;
+    public int numberOfPeople;
+    public String date;
+    public String trainNumber;
+    public String trainName;
+    public String classType;
+    public String dateOfJourney;
+    public String fromPlace;
+    public String toDestination;
+
+
+
+    public Reservation(String name, int numberOfPeople, String date, long trainNumber2, String trainName2, String classType2, String classType3, String fromPlace2, String toDestination2, String trainNumber, String trainName, String dateOfJourney, String classType, String toDestination, String fromPlace) {
+        this.name = name;
+        this.numberOfPeople = numberOfPeople;
+        this.date = date;
+        this.trainNumber= trainNumber;
+        this.trainName= trainName;
+        this.classType= classType;
+        this.dateOfJourney= dateOfJourney;
+        this.fromPlace= fromPlace;
+        this.toDestination= toDestination;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public String getDate() {
+        return date;
+    }
+    public String gettrainNumber() {
+        return trainNumber;
+    }
+    public String gettrainName() {
+        return trainName;
+    }
+    public String getclassType() {
+        return classType;
+    }
+    public String getdateOfJourney() {
+        return dateOfJourney;
+    }
+    public String fromPlace() {
+        return fromPlace;
+    }
+    public String toDestination() {
+        return toDestination;
+    }
+}
+
+class ReservationSystem {
+    private List<Reservation> reservations;
+
+    public ReservationSystem() {
+        reservations = new ArrayList<>();
+    }
+
+    public void makeReservation(String name, int numberOfPeople, String date,int trainNumber,String trainName,String classType,String fromPlace,String toDestination){
+        Reservation reservation = new Reservation(name, numberOfPeople, date, trainNumber ,trainName, classType, classType, fromPlace, toDestination, toDestination, toDestination, toDestination, toDestination, toDestination, toDestination);
+        reservations.add(reservation);
+        String dateOfJourney = null;
+        System.out.println("Reservation successful for " + name + " on " + date + " for " + numberOfPeople + " people." +trainNumber+"trainNumber" + trainName+"trainName"+ classType +"classType"+dateOfJourney+"dateOfJourney"+fromPlace+"fromPlace"+toDestination+"toDestination");
+    }
+
+    public void displayReservations() {
+        if (reservations.isEmpty()) {
+            System.out.println("No reservations available.");
+        } else {
+            System.out.println("Reservations:");
+            for (Reservation reservation : reservations) {
+                System.out.println("Name: " + reservation.getName() +
+                        ", People: " + reservation.getNumberOfPeople() +
+                        ", Date: " + reservation.getDate()+
+                        ", trainNumber:" + reservation.gettrainNumber()+
+                        ", trainName:" +reservation.gettrainName()+
+                        ", classType:" + reservation.getclassType()+
+                        ", dateOfJourney:" +reservation.getdateOfJourney()+
+                        ",fromPlace:" +reservation.fromPlace()+
+                        ", toDestination:" +reservation.toDestination());
+
+            }
+        }
+    }
+
+    public void makeReservation(String name, int numberOfPeople, String date) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void makeReservation(String name, int numberOfPeople, String date, String trainNumber, String trainName,
+                                String classType, String dateOfJourney, String fromPlace, String toDestination) {
+        // TODO Auto-generated method stub
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ReservationSystem reservationSystem = new ReservationSystem();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\n1. Make a reservation");
+            System.out.println("2. Display reservations");
+            System.out.println("3. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter your name: ");
+                    String name = scanner.next();
+                    System.out.print("Enter the number of people: ");
+                    int numberOfPeople = scanner.nextInt();
+                    System.out.print("Enter the date: ");
+                    String date = scanner.next();
+                    System.out.println("Enter the train number: ");
+                    String trainNumber =scanner.next();
+                    System.out.println("Enter the train name: ");
+                    String trainName =scanner.next();
+                    System.out.println("Enter the class type: ");
+                    String classType =scanner.next();
+                    System.out.println("Enter data of Journey: ");
+                    String dateOfJourney =scanner.next();
+                    System.out.println("Enter from Place: ");
+                    String fromPlace =scanner.next();
+                    System.out.println("Enter to destination: ");
+                    String toDestination =scanner.next();
+
+
+                    reservationSystem.makeReservation(name, numberOfPeople, date, trainNumber, trainName, classType, dateOfJourney, fromPlace, toDestination);
+                    break;
+                case 2:
+                    reservationSystem.displayReservations();
+                    break;
+                case 3:
+                    System.out.println("Exiting the  train reservation system. Thank you for your patience!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option for your reservation.");
+            }
+        }
+    }
+}
